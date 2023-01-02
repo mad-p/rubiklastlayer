@@ -1,6 +1,8 @@
 # Represent cube state
 # Has methods about moves
 
+require 'debug'
+
 class Cube
   # Face colors
   U = 0; D = 1; F = 2; B = 3; R = 4; L = 5
@@ -12,10 +14,14 @@ class Cube
   L_COLOR = '#009900',   # L: green
 
   FACE_NAMES = %w[U D F B R L]
-  FACE_COLORS = [
-    U_COLOR, D_COLOR, F_COLOR,
-    B_COLOR, R_COLOR, L_COLOR,
-  ]
+  FACE_COLORS = {
+    "U" => U_COLOR,
+    "D" => D_COLOR,
+    "F" => F_COLOR,
+    "B" => B_COLOR,
+    "R" => R_COLOR,
+    "L" => L_COLOR,
+  }
 
   # Cube topologies
   NEIGHBORS = [
@@ -37,7 +43,7 @@ class Cube
   # Name of all stickers
   STICKERS = []
 
-  # setup TRANS
+  # setup TRANS and STICKERS
   def self.init_trans
     # Face turns
     FACE_NAMES.each.with_index do |f, i|
@@ -93,7 +99,6 @@ class Cube
     # x = Rw L'
     %w[M Lw L'  E Dw D'  S Fw F'
        x Rw L'  y Uw D'  z Fw B'].each_slice(3) do |m, f, s|
-      puts "#{m} = #{f} #{s}"
       stickers = TRANS[f].keys + TRANS[s].keys # two sets are disjoint
       trans = stickers.map do |st|
         dest = TRANS[f][st] || st
@@ -112,10 +117,81 @@ class Cube
     STICKERS.clear
     STICKERS.append(*(TRANS["x"].keys + TRANS["y"].keys).uniq)
   end
+  self.init_trans # do it now!
 
-  # sticker: Hash[String]: int
+  # stickers: Hash[String]: String
   # key: sticker name: eg. "BFU", "FU", "U"
-  # value: color index: 0-5
-  attr_accessor :sticker
+  # value: color name: eg. "U", "D"
+  attr_accessor :stickers
 
+  def initialize
+    @stickers = {}
+    solved
+  end
+  def solved
+    STICKERS.each do |st|
+      @stickers[st] = st[0]
+    end
+  end
+  def inverse(move)
+    move.split.reverse.map do |m|
+      case m
+      when /(.*)'/
+        $1
+      when /(.*)2/
+        m
+      else
+        "#{m}'"
+      end
+    end.join(" ")
+  end
+  def apply(move)
+    result = @stickers.dup
+    move.split.each do |m|
+      tmp = result.dup
+      trans = TRANS[m] or throw "Unknown move #{m}"
+      STICKERS.each do |st|
+        to = trans[st] || st
+        tmp[to] = result[st]
+      end
+      result = tmp
+    end
+    @stickers = result
+    self
+  end
+  def layout(template)
+    template.split(/([UDFBRL][UDFBRL ][UDFBRL ]?)/).map do |st|
+      case st
+      when /[UDFBRL]/
+        stickers[st.strip]
+      else
+        st.gsub(/---/, ' ')
+      end
+    end.join
+  end
+  def table
+    layout(<<EOL)
+--- --- ---   BLD BD  BDR
+--- --- ---   BL  B   BR
+--- --- ---   BUL BU  BRU
+
+LDB LB  LBU   ULB UB  UBR   RUB RB  RBD   DRB DB  DBL
+LD  L   LU    UL  U   UR    RU  R   RD    DR  D   DL
+LFD LF  LUF   UFL UF  URF   RFU RF  RDF   DFR DF  DLF
+
+--- --- ---   FLU FU  FUR
+--- --- ---   FL  F   FR
+--- --- ---   FDL FD  FRD
+EOL
+  end
+  def u_face
+    layout(<<EOL)
+ULB UB  UBR
+UL  U   UR
+UFL UF  URF
+EOL
+  end
+  def inspect
+    layout("ULB UB  UBR; UL  U   UR; UFL UF  URF")
+  end
 end
