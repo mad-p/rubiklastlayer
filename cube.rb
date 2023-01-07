@@ -191,7 +191,62 @@ UL  U   UR
 UFL UF  URF
 EOL
   end
+  def ll
+    layout(<<EOL)
+---  BUL BU  BRU
+
+LBU  ULB UB  UBR  RUB
+LU   UL  U   UR   RU
+LUF  UFL UF  URF  RFU
+
+---  FLU FU  FUR
+EOL
+  end
   def inspect
     layout("ULB UB  UBR; UL  U   UR; UFL UF  URF")
+  end
+  def positions(pos)
+    case pos.size
+    when 2
+      [pos, pos.reverse]
+    when 3
+      [pos, pos[1,2] + pos[0], pos[2,1] + pos[0,2]]
+    end
+  end
+  def cubie(pos)
+    positions(pos).map{|p| stickers[p]}.join
+  end
+  def permutation(start)
+    perm = []
+    pos = start
+    while true
+      perm << pos
+      pos = cubie(pos)
+      break if pos == start
+      if perm.size > 12
+        debugger
+      end
+    end
+    perm
+  end
+  def pll_permutations
+    cp = []
+    %w[ULB UBR URF UFL].each do |pos|
+      next if cp.any?{|p| p.include?(pos)}
+      p = permutation(pos)
+      next if p.size == 1
+      cp << p
+    end
+    ep = []
+    %w[UL UB UR UF].each do |pos|
+      next if ep.any?{|p| p.include?(pos)}
+      p = permutation(pos)
+      next if p.size == 1
+      ep << p
+    end
+    if (cp + ep).any?{|p| p.any?{|c| c[0] != "U"}}
+      raise 'Not a PLL'
+    end
+    [cp, ep]
   end
 end
