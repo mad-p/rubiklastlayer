@@ -2,16 +2,18 @@
 # Has methods about moves
 
 require 'debug'
+require './cube_png'
 
 class Cube
+
   # Face colors
   U = 0; D = 1; F = 2; B = 3; R = 4; L = 5
-  U_COLOR = '#ffff00',   # U: yellow
-  D_COLOR = '#dddddd',   # D: white
-  F_COLOR = '#ff8000',   # F: orange
-  B_COLOR = '#ff0000',   # B: red
-  R_COLOR = '#000099',   # R: blue
-  L_COLOR = '#009900',   # L: green
+  U_COLOR = '#ffff00'   # U: yellow
+  D_COLOR = '#dddddd'   # D: white
+  F_COLOR = '#ff8000'   # F: orange
+  B_COLOR = '#ff0000'   # B: red
+  R_COLOR = '#009900'   # L: blue
+  L_COLOR = '#000099'   # R: green
 
   FACE_NAMES = %w[U D F B R L]
   FACE_COLORS = {
@@ -119,22 +121,26 @@ class Cube
   end
   self.init_trans # do it now!
 
-  # stickers: Hash[String]: String
+  # sticker: Hash[String]: String
   # key: sticker name: eg. "BFU", "FU", "U"
   # value: color name: eg. "U", "D"
-  attr_accessor :stickers
+  attr_accessor :sticker
 
   def initialize
-    @stickers = {}
+    @sticker = {}
     solved
   end
   def solved
     STICKERS.each do |st|
-      @stickers[st] = st[0]
+      @sticker[st] = st[0]
     end
+    self
+  end
+  def parse(move)
+    move.scan(/[UDFBRLMESxyz]w?2?'?/)
   end
   def inverse(move)
-    move.split.reverse.map do |m|
+    parse(move).reverse.map do |m|
       case m
       when /(.*)'/
         $1
@@ -143,11 +149,11 @@ class Cube
       else
         "#{m}'"
       end
-    end.join(" ")
+    end.join
   end
   def apply(move)
-    result = @stickers.dup
-    move.split.each do |m|
+    result = @sticker.dup
+    parse(move).each do |m|
       tmp = result.dup
       trans = TRANS[m] or throw "Unknown move #{m}"
       STICKERS.each do |st|
@@ -156,14 +162,25 @@ class Cube
       end
       result = tmp
     end
-    @stickers = result
+    @sticker = result
     self
+  end
+  def reorient
+    apply("x2") if sticker["D"] == "U"
+    apply("x")  if sticker["F"] == "U"
+    apply("x'") if sticker["B"] == "U"
+    apply("z'") if sticker["R"] == "U"
+    apply("z")  if sticker["L"] == "U"
+
+    apply("y2") if sticker["B"] == "F"
+    apply("y'") if sticker["L"] == "F"
+    apply("y")  if sticker["R"] == "F"
   end
   def layout(template)
     template.split(/([UDFBRL][UDFBRL ][UDFBRL ]?)/).map do |st|
       case st
       when /[UDFBRL]/
-        stickers[st.strip]
+        sticker[st.strip]
       else
         st.gsub(/---/, ' ')
       end
@@ -214,7 +231,7 @@ EOL
     end
   end
   def cubie(pos)
-    positions(pos).map{|p| stickers[p]}.join
+    positions(pos).map{|p| sticker[p]}.join
   end
   def permutation(start)
     perm = []
@@ -248,5 +265,73 @@ EOL
       raise 'Not a PLL'
     end
     [cp, ep]
+  end
+  def oll_png
+    edges = %w[BUL BU BRU LBU LU LUF RUB RU RFU FLU FU FUR]
+    faces = %w[ULB UB UBR UL U UR UFL UF URF]
+    png = CubePng.new
+    png.draw_frame
+    edges.each.with_index do |en, i|
+      if sticker[en] == "U"
+        png.fill_edge(i, U_COLOR, true)
+      end
+    end
+    faces.each.with_index do |fc, i|
+      png.fill_face(i, FACE_COLORS[sticker[fc]])
+    end
+    png
+  end
+  def pll_png
+    faces = %w[ULB UB UBR UL U UR UFL UF URF]
+    edges = %w[BUL BU BRU LBU LU LUF RUB RU RFU FLU FU FUR]
+    png = CubePng.new
+    png.draw_frame
+
+    cp, ep = pll_permutations
+
+    faces.each.with_index do |fn, i|
+      case fn.size
+      when 1
+        # nop
+      when 2
+        next if ep.any?{|p| p.include? fn}
+      when 3
+        next if cp.any?{|p| p.include? fn}
+      end
+      png.fill_face(i, U_COLOR)
+    end
+
+    # show edge color if not solved
+    edges.each.with_index do |en, i|
+      if sticker[en] != en[0]
+        png.fill_edge(i, FACE_COLORS[sticker[en]])
+      end
+    end
+
+    # draw permutation lines
+    co = nil
+    eo = nil
+    if !cp.empty? && !ep.empty?
+      co = :outer
+      eo = :inner
+    end
+
+    cp.each do |p|
+      p.each.with_index do |f, i|
+        st = faces.index(f)
+        en = faces.index(p[(i + 1) % p.size])
+        png.draw_perm_line(st, en, co)
+      end
+    end
+
+    ep.each do |p|
+      p.each.with_index do |f, i|
+        st = faces.index(f)
+        en = faces.index(p[(i + 1) % p.size])
+        png.draw_perm_line(st, en, eo)
+      end
+    end
+
+    png
   end
 end
