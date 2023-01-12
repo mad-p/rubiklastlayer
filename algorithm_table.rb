@@ -9,10 +9,19 @@ class AlgorithmTable
     @cols = []
   end
   def add(name, occurs, algorithm)
+    return if algorithm == ""
+
     cube = Cube.new
+    # find cube rotation of algorithm
+    cube.apply(cube.inverse(algorithm))
+    reorienter = cube.reorient
+    # undo rotation beforehand
+    cube.solved
+    cube.apply(reorienter)
     cube.apply(cube.inverse(algorithm))
     cube.reorient
 
+    cube.check_f2l or raise "Not an LL algorithm: #{name}"
     pll = /^[U; ]+$/ =~ cube.inspect
     png = pll ? cube.pll_png : cube.oll_png
     filename = "imgs/#{name}.png"

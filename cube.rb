@@ -166,15 +166,17 @@ class Cube
     self
   end
   def reorient
-    apply("x2") if sticker["D"] == "U"
-    apply("x")  if sticker["F"] == "U"
-    apply("x'") if sticker["B"] == "U"
-    apply("z'") if sticker["R"] == "U"
-    apply("z")  if sticker["L"] == "U"
+    seq = []
+    if sticker["D"] == "U"; apply("x2"); seq << "x2" end
+    if sticker["F"] == "U"; apply("x") ; seq << "x" end
+    if sticker["B"] == "U"; apply("x'"); seq << "x'" end
+    if sticker["R"] == "U"; apply("z'"); seq << "z'" end
+    if sticker["L"] == "U"; apply("z") ; seq << "z" end
 
-    apply("y2") if sticker["B"] == "F"
-    apply("y'") if sticker["L"] == "F"
-    apply("y")  if sticker["R"] == "F"
+    if sticker["B"] == "F"; apply("y2"); seq << "y2" end
+    if sticker["L"] == "F"; apply("y'"); seq << "y'" end
+    if sticker["R"] == "F"; apply("y") ; seq << "y" end
+    seq.join
   end
   def layout(template)
     template.split(/([UDFBRL][UDFBRL ][UDFBRL ]?)/).map do |st|
@@ -221,6 +223,11 @@ EOL
   end
   def inspect
     layout("ULB UB  UBR; UL  U   UR; UFL UF  URF")
+  end
+  def check_f2l
+    STICKERS.all? do |st|
+      /U/ =~ st || sticker[st] == st[0]
+    end
   end
   def positions(pos)
     case pos.size
