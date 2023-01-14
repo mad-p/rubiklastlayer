@@ -29,7 +29,7 @@ class AlgorithmTable
     width = png.image.columns
     height = png.image.rows
 
-    len = cube.parse(algorithm).size
+    len = cube.parse(algorithm).find_all{|m|m !~ /[xyz]/}.size
 
     @cols << <<EOL
         <td width="18%">

@@ -12,8 +12,8 @@ class Cube
   D_COLOR = '#eeeeee'   # D: white
   F_COLOR = '#ee7700'   # F: orange
   B_COLOR = '#cc0000'   # B: red
-  R_COLOR = '#00aa00'   # R: green
-  L_COLOR = '#0000cc'   # L: blue
+  R_COLOR = '#0000cc'   # R: blue
+  L_COLOR = '#00aa00'   # L: green
 
   FACE_NAMES = %w[U D F B R L]
   FACE_COLORS = {
