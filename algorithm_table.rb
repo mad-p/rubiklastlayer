@@ -32,11 +32,11 @@ class AlgorithmTable
     len = cube.parse(algorithm).find_all{|m|m !~ /[xyz]/}.size
 
     @cols << <<EOL
-        <td width="18%">
-         <img width="#{width}" height="#{height}" align="left" src="#{filename}">
-         <p class="extra">code: #{name}<br>occurs: #{occurs}</p>
-         <p class="algorithm">#{algorithm} (#{len})</p>
-        </td>
+      <td width="18%">
+        <img width="#{width}" height="#{height}" align="left" src="#{filename}">
+        <p class="extra">code: #{name}<br>occurs: #{occurs}</p>
+        <p class="algorithm">#{algorithm} (#{len})</p>
+      </td>
 EOL
     if @cols.size == N_COLUMN
       @rows << @cols
@@ -58,7 +58,7 @@ EOL
   def header
     <<EOL
 <head>
-<title>Rubik's Cube: Final layer algorithms (printable page)</title>
+<title>Final layer algorithms</title>
 
 <style>
 p.extra {
@@ -89,13 +89,14 @@ td {
 <body bgcolor="#ffffff">
 
 <table frame="border" rules="all" cellpadding="2" cellspacing="0">
+  <tbody>
 EOL
   end
   def trailer
     <<EOL
- </table>
+  </tbody>
+</table>
 </body>
-
 </html>
 EOL
   end
