@@ -64,7 +64,7 @@ EOL
 p.extra {
  font-family: arial, helvetica;
  font-style: normal;
- font-size: 6pt;
+ font-size: 8pt;
  color: green;
  text-align: right;
  clear: none;
@@ -73,7 +73,7 @@ p.extra {
 p.algorithm {
  font-family: arial, helvetica;
  font-style: normal;
- font-size: 6pt;
+ font-size: 8pt;
  color: blue;
  text-align: left;
  clear: left;

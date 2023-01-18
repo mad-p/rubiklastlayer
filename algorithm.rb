@@ -2,6 +2,7 @@ require './algorithm_table'
 
 t = AlgorithmTable.new
 
+# To find alternative algorithms, see
 # http://algdb.net/puzzle/333/
 
 t.add("o1", "2/216", "FU2y'R2FRF'U2R'FRF'")
@@ -68,7 +69,6 @@ t.add("p3", "8/288", "RB'R'FRBR'Bw2'R'BRFR'B'R")
 t.add("p4", "8/288", "U2M2UM2UM'U2M2U2M'")
 t.add("p5", "4/288", "L'R'U2LRFBU2F'B'")
 t.add("p6", "16/288", "RU'RURURU'R'U'R2")
-# t.add("p6'", "16/288", "R2U'R'U'RURURU'R")
 t.add("p7", "16/288", "R2URUR'U'R'U'R'UR'")
 t.add("p8", "16/288", "LU'R'UL'U2RU'R'U2R")
 t.add("p9", "16/288", "R2FwRFw'R2BwR'FRF2")
@@ -85,6 +85,5 @@ t.add("p18", "16/288", "RU'RDw-RD'RDR2-x-DRD'R'D'")
 t.add("p19", "4/288", "LU'RU2L'UR'LU'RU2L'UR'U")
 t.add("p20", "4/288", "R'UL'U2RU'LR'UL'U2RU'LU'")
 t.add("p21", "16/288", "FRU'R'U'RUR'F'RUR'U'R'FRF'")
-
 
 t.generate_html("index.html")
