@@ -13,7 +13,7 @@ Make a table of your last layer algorithms in printable HTML.
 
 # Example
 
-- [index.html](./index.html)
+- [index.html](https://htmlpreview.github.io/?https://github.com/mad-p/rubiklastlayer/blob/main/index.html)
 
 # License
 
