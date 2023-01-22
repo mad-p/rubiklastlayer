@@ -27,6 +27,7 @@ class AlgorithmTable
     end
     pll = /^[U; ]+$/ =~ cube.inspect
     png = pll ? cube.pll_png : cube.oll_png
+    Dir.mkdir("imgs", 0777) rescue nil # ignore EEXIST
     filename = "imgs/#{name}.png"
     png.save_png(filename)
     width = png.image.columns

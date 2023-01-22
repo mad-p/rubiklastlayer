@@ -1,0 +1,464 @@
+<head>
+<title>Final layer algorithms</title>
+
+<style>
+p.extra {
+ font-family: arial, helvetica;
+ font-style: normal;
+ font-size: 8pt;
+ color: green;
+ text-align: right;
+ clear: none;
+}
+
+p.algorithm {
+ font-family: arial, helvetica;
+ font-style: normal;
+ font-size: 8pt;
+ color: blue;
+ text-align: left;
+ clear: left;
+}
+
+td {
+ vertical-align: top;
+}
+</style>
+
+</head>
+
+<body bgcolor="#ffffff">
+
+<table frame="border" rules="all" cellpadding="2" cellspacing="0">
+  <tbody>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o1.png">
+        <p class="extra">code: o1<br>occurs: 2/216</p>
+        <p class="algorithm">BU2B2RBR'U2B'RBR' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o2.png">
+        <p class="extra">code: o2<br>occurs: 4/216</p>
+        <p class="algorithm">FwURU'R'S'URU'R'F' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o3.png">
+        <p class="extra">code: o3<br>occurs: 4/216</p>
+        <p class="algorithm">FURU'R'F'RBUB'U'R' (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o4.png">
+        <p class="extra">code: o4<br>occurs: 4/216</p>
+        <p class="algorithm">FURU'R'F'LFUF'U'L' (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o5.png">
+        <p class="extra">code: o5<br>occurs: 4/216</p>
+        <p class="algorithm">R'F2LFL'FR (7)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o6.png">
+        <p class="extra">code: o6<br>occurs: 4/216</p>
+        <p class="algorithm">LF2R'F'RF'L' (7)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o7.png">
+        <p class="extra">code: o7<br>occurs: 4/216</p>
+        <p class="algorithm">FRB'RBR2F' (7)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o8.png">
+        <p class="extra">code: o8<br>occurs: 4/216</p>
+        <p class="algorithm">B'R'FR'F'R2B (7)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o9.png">
+        <p class="extra">code: o9<br>occurs: 4/216</p>
+        <p class="algorithm">B'U'BRB'R'URBR' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o10.png">
+        <p class="extra">code: o10<br>occurs: 4/216</p>
+        <p class="algorithm">RUR'-u-R'FRU'R'F'R (10)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o11.png">
+        <p class="extra">code: o11<br>occurs: 4/216</p>
+        <p class="algorithm">M'LUL'ULU2L'URL' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o12.png">
+        <p class="extra">code: o12<br>occurs: 4/216</p>
+        <p class="algorithm">M'R'U'RU'R'U2'RU'L'R (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o13.png">
+        <p class="extra">code: o13<br>occurs: 4/216</p>
+        <p class="algorithm">RB'R'U'RBR'B'UB (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o14.png">
+        <p class="extra">code: o14<br>occurs: 4/216</p>
+        <p class="algorithm">R'FRUR'F'R-u'-RU'R' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o15.png">
+        <p class="extra">code: o15<br>occurs: 4/216</p>
+        <p class="algorithm">RBR'F'RUB'U'R'F (10)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o16.png">
+        <p class="extra">code: o16<br>occurs: 4/216</p>
+        <p class="algorithm">L'B'LFL'U'BULF' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o17.png">
+        <p class="extra">code: o17<br>occurs: 4/216</p>
+        <p class="algorithm">RB'R'BU2BU'LU'L'B' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o18.png">
+        <p class="extra">code: o18<br>occurs: 4/216</p>
+        <p class="algorithm">FRUR'UF'U2'F'LFL' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o19.png">
+        <p class="extra">code: o19<br>occurs: 4/216</p>
+        <p class="algorithm">FU2F'L'B'UR'U2RBL (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o20.png">
+        <p class="extra">code: o20<br>occurs: 1/216</p>
+        <p class="algorithm">FB'U'R'URURUR'U'BF' (13)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o21.png">
+        <p class="extra">code: o21<br>occurs: 2/216</p>
+        <p class="algorithm">R'U2RUR'U'RUR'UR (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o22.png">
+        <p class="extra">code: o22<br>occurs: 4/216</p>
+        <p class="algorithm">RU2R2U'R2U'R2U2R (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o23.png">
+        <p class="extra">code: o23<br>occurs: 4/216</p>
+        <p class="algorithm">R2D'RU2'R'DRU2'R (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o24.png">
+        <p class="extra">code: o24<br>occurs: 4/216</p>
+        <p class="algorithm">RBL'B'R'BLB' (8)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o25.png">
+        <p class="extra">code: o25<br>occurs: 4/216</p>
+        <p class="algorithm">R'FRB'R'F'RB (8)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o26.png">
+        <p class="extra">code: o26<br>occurs: 4/216</p>
+        <p class="algorithm">R'U'RU'R'U2R (7)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o27.png">
+        <p class="extra">code: o27<br>occurs: 4/216</p>
+        <p class="algorithm">RUR'URU2R' (7)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o28.png">
+        <p class="extra">code: o28<br>occurs: 4/216</p>
+        <p class="algorithm">LF'LF2R'FRF2L2 (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o29.png">
+        <p class="extra">code: o29<br>occurs: 4/216</p>
+        <p class="algorithm">F'U'L'UB'LFL'BL (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o30.png">
+        <p class="extra">code: o30<br>occurs: 4/216</p>
+        <p class="algorithm">FURU'BR'F'RB'R' (10)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o31.png">
+        <p class="extra">code: o31<br>occurs: 4/216</p>
+        <p class="algorithm">R'U'FURU'R'F'R (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o32.png">
+        <p class="extra">code: o32<br>occurs: 4/216</p>
+        <p class="algorithm">LUF'U'L'ULFL' (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o33.png">
+        <p class="extra">code: o33<br>occurs: 4/216</p>
+        <p class="algorithm">RUR'U'R'FRF' (8)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o34.png">
+        <p class="extra">code: o34<br>occurs: 4/216</p>
+        <p class="algorithm">RUR2U'R'FRURU'F' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o35.png">
+        <p class="extra">code: o35<br>occurs: 4/216</p>
+        <p class="algorithm">RU2R2FRF'RU2R' (9)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o36.png">
+        <p class="extra">code: o36<br>occurs: 4/216</p>
+        <p class="algorithm">R'U'RU'R'URULwU'R'U (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o37.png">
+        <p class="extra">code: o37<br>occurs: 4/216</p>
+        <p class="algorithm">FRU'R'U'RUR'F' (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o38.png">
+        <p class="extra">code: o38<br>occurs: 4/216</p>
+        <p class="algorithm">RUR'URU'R'U'R'FRF' (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o39.png">
+        <p class="extra">code: o39<br>occurs: 4/216</p>
+        <p class="algorithm">LU'R'F'U'FUL'R (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o40.png">
+        <p class="extra">code: o40<br>occurs: 4/216</p>
+        <p class="algorithm">R'ULFUF'U'RL' (9)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o41.png">
+        <p class="extra">code: o41<br>occurs: 4/216</p>
+        <p class="algorithm">RUR'URU2R'FRUR'U'F' (13)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o42.png">
+        <p class="extra">code: o42<br>occurs: 4/216</p>
+        <p class="algorithm">R'U'RU'R'U2RFRUR'U'F' (13)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o43.png">
+        <p class="extra">code: o43<br>occurs: 4/216</p>
+        <p class="algorithm">F'U'L'ULF (6)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o44.png">
+        <p class="extra">code: o44<br>occurs: 4/216</p>
+        <p class="algorithm">FURU'R'F' (6)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o45.png">
+        <p class="extra">code: o45<br>occurs: 4/216</p>
+        <p class="algorithm">FRUR'U'F' (6)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o46.png">
+        <p class="extra">code: o46<br>occurs: 4/216</p>
+        <p class="algorithm">R'U'R'FRF'UR (8)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o47.png">
+        <p class="extra">code: o47<br>occurs: 4/216</p>
+        <p class="algorithm">F'L'U'LUL'U'LUF (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o48.png">
+        <p class="extra">code: o48<br>occurs: 4/216</p>
+        <p class="algorithm">FRUR'U'RUR'U'F' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o49.png">
+        <p class="extra">code: o49<br>occurs: 4/216</p>
+        <p class="algorithm">RwU'Rw2URw2URw2U'Rw (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o50.png">
+        <p class="extra">code: o50<br>occurs: 4/216</p>
+        <p class="algorithm">Rw'URw2U'Rw2U'Rw2URw' (9)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o51.png">
+        <p class="extra">code: o51<br>occurs: 4/216</p>
+        <p class="algorithm">FwRUR'U'RUR'U'Fw' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o52.png">
+        <p class="extra">code: o52<br>occurs: 4/216</p>
+        <p class="algorithm">RUR'URDw'RU'R'F' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o53.png">
+        <p class="extra">code: o53<br>occurs: 4/216</p>
+        <p class="algorithm">Rw'U'RU'R'URU'R'U2Rw (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o54.png">
+        <p class="extra">code: o54<br>occurs: 4/216</p>
+        <p class="algorithm">RwUR'URU'R'URU2Rw' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o55.png">
+        <p class="extra">code: o55<br>occurs: 2/216</p>
+        <p class="algorithm">RU2R2U'RU'R'U2FRF' (11)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o56.png">
+        <p class="extra">code: o56<br>occurs: 2/216</p>
+        <p class="algorithm">RwURw'URU'R'URU'R'RwU'Rw' (14)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/o57.png">
+        <p class="extra">code: o57<br>occurs: 2/216</p>
+        <p class="algorithm">RUR'U'M'URU'Rw' (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p1.png">
+        <p class="extra">code: p1<br>occurs: 16/288</p>
+        <p class="algorithm">R2F2R'B'RF2R'BR' (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p2.png">
+        <p class="extra">code: p2<br>occurs: 16/288</p>
+        <p class="algorithm">RB'RF2R'BRF2R2 (9)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p3.png">
+        <p class="extra">code: p3<br>occurs: 8/288</p>
+        <p class="algorithm">RB'R'FRBR'Bw2'R'BRFR'B'R (15)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p4.png">
+        <p class="extra">code: p4<br>occurs: 8/288</p>
+        <p class="algorithm">U2M2UM2UM'U2M2U2M' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p5.png">
+        <p class="extra">code: p5<br>occurs: 4/288</p>
+        <p class="algorithm">L'R'U2LRFBU2F'B' (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p6.png">
+        <p class="extra">code: p6<br>occurs: 16/288</p>
+        <p class="algorithm">RU'RURURU'R'U'R2 (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p7.png">
+        <p class="extra">code: p7<br>occurs: 16/288</p>
+        <p class="algorithm">R2URUR'U'R'U'R'UR' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p8.png">
+        <p class="extra">code: p8<br>occurs: 16/288</p>
+        <p class="algorithm">LU'R'UL'U2RU'R'U2R (11)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p9.png">
+        <p class="extra">code: p9<br>occurs: 16/288</p>
+        <p class="algorithm">R2FwRFw'R2BwR'FRF2 (10)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p9'.png">
+        <p class="extra">code: p9'<br>occurs: 16/288</p>
+        <p class="algorithm">R'ULU'RU2L'ULU2L' (11)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p10.png">
+        <p class="extra">code: p10<br>occurs: 16/288</p>
+        <p class="algorithm">RUR'U'R'FR2U'R'U'RUR'F' (14)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p11.png">
+        <p class="extra">code: p11<br>occurs: 16/288</p>
+        <p class="algorithm">U'R'U2RU'F'RwUR'U'Rw'FU'R (14)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p12.png">
+        <p class="extra">code: p12<br>occurs: 16/288</p>
+        <p class="algorithm">URU2'R'UBRw'U'RURwB'UR' (14)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p13.png">
+        <p class="extra">code: p13<br>occurs: 16/288</p>
+        <p class="algorithm">R'URU'R2'F'U'FURU'R2B'R'B (15)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p14.png">
+        <p class="extra">code: p14<br>occurs: 16/288</p>
+        <p class="algorithm">R2'Uw'RU'RUR'UwR2'-u-RU'R' (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p15.png">
+        <p class="extra">code: p15<br>occurs: 16/288</p>
+        <p class="algorithm">R2UwR'-UR'U'-RUw'R2-u'-R'UR (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p16.png">
+        <p class="extra">code: p16<br>occurs: 16/288</p>
+        <p class="algorithm">R'U'R-u-R2'Uw-R'URU'R-Uw'R2 (12)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p17.png">
+        <p class="extra">code: p17<br>occurs: 16/288</p>
+        <p class="algorithm">RUR'-u'-'R2Uw'RU'R'UR'UwR2' (12)</p>
+      </td>
+    </tr>
+    <tr>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p18.png">
+        <p class="extra">code: p18<br>occurs: 16/288</p>
+        <p class="algorithm">RU'RDw-RD'RDR2-r-DRD'R'D' (14)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p19.png">
+        <p class="extra">code: p19<br>occurs: 4/288</p>
+        <p class="algorithm">LU'RU2L'UR'LU'RU2L'UR'U (15)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p20.png">
+        <p class="extra">code: p20<br>occurs: 4/288</p>
+        <p class="algorithm">R'UL'U2RU'LR'UL'U2RU'LU' (15)</p>
+      </td>
+      <td width="18%">
+        <img width="39" height="39" align="left" src="imgs/p21.png">
+        <p class="extra">code: p21<br>occurs: 16/288</p>
+        <p class="algorithm">FRU'R'U'RUR'F'RUR'U'R'FRF' (17)</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
