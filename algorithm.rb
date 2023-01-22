@@ -5,7 +5,16 @@ t = AlgorithmTable.new
 # To find alternative algorithms, see
 # http://algdb.net/puzzle/333/
 
-t.add("o1", "2/216", "FU2y'R2FRF'U2R'FRF'")
+# Put your algorithms here.
+#   Non-LL algorithms will be reported
+# Lowercase moves can be either whole cube rotations or double layer turns.
+#   See config.rb for choices.
+# You can put extra spaces, parans, or hyphens.
+#   Note: Parens won't be expanded: i.e.  (URU'R')2 doesn't work as you expect.
+
+# Code should be unique (used in png filename)
+#     code, occurs,  algorithm
+t.add("o1", "2/216", "BU2B2RBR'U2B'RBR'")
 t.add("o2", "4/216", "FwURU'R'S'URU'R'F'")
 t.add("o3", "4/216", "FURU'R'F'RBUB'U'R'")
 t.add("o4", "4/216", "FURU'R'F'LFUF'U'L'")
@@ -14,11 +23,11 @@ t.add("o6", "4/216", "LF2R'F'RF'L'")
 t.add("o7", "4/216", "FRB'RBR2F'")
 t.add("o8", "4/216", "B'R'FR'F'R2B")
 t.add("o9", "4/216", "B'U'BRB'R'URBR'")
-t.add("o10", "4/216", "RUR'yR'FRU'R'F'R")
+t.add("o10", "4/216", "RUR'-u-R'FRU'R'F'R")
 t.add("o11", "4/216", "M'LUL'ULU2L'URL'")
 t.add("o12", "4/216", "M'R'U'RU'R'U2'RU'L'R")
 t.add("o13", "4/216", "RB'R'U'RBR'B'UB")
-t.add("o14", "4/216", "R'FRUR'F'Ry'RU'R'")
+t.add("o14", "4/216", "R'FRUR'F'R-u'-RU'R'")
 t.add("o15", "4/216", "RBR'F'RUB'U'R'F")
 t.add("o16", "4/216", "L'B'LFL'U'BULF'")
 t.add("o17", "4/216", "RB'R'BU2BU'LU'L'B'")
@@ -77,11 +86,11 @@ t.add("p10", "16/288", "RUR'U'R'FR2U'R'U'RUR'F'")
 t.add("p11", "16/288", "U'R'U2RU'F'RwUR'U'Rw'FU'R")
 t.add("p12", "16/288", "URU2'R'UBRw'U'RURwB'UR'")
 t.add("p13", "16/288", "R'URU'R2'F'U'FURU'R2B'R'B")
-t.add("p14", "16/288", "R2'Uw'RU'RUR'UwR2'yRU'R'")
-t.add("p15", "16/288", "R2UwR'-UR'U'-RUw'R2-y'-R'UR")
-t.add("p16", "16/288", "R'U'R-y-R2'Uw-R'URU'R-Uw'R2")
-t.add("p17", "16/288", "RUR'-y'-'R2Uw'RU'R'UR'UwR2'")
-t.add("p18", "16/288", "RU'RDw-RD'RDR2-x-DRD'R'D'")
+t.add("p14", "16/288", "R2'Uw'RU'RUR'UwR2'-u-RU'R'")
+t.add("p15", "16/288", "R2UwR'-UR'U'-RUw'R2-u'-R'UR")
+t.add("p16", "16/288", "R'U'R-u-R2'Uw-R'URU'R-Uw'R2")
+t.add("p17", "16/288", "RUR'-u'-'R2Uw'RU'R'UR'UwR2'")
+t.add("p18", "16/288", "RU'RDw-RD'RDR2-r-DRD'R'D'")
 t.add("p19", "4/288", "LU'RU2L'UR'LU'RU2L'UR'U")
 t.add("p20", "4/288", "R'UL'U2RU'LR'UL'U2RU'LU'")
 t.add("p21", "16/288", "FRU'R'U'RUR'F'RUR'U'R'FRF'")

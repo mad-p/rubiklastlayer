@@ -2,28 +2,15 @@
 # Has methods about moves
 
 require 'debug'
+require './config.rb'
 require './cube_png'
 
 class Cube
 
   # Face colors
-  U = 0; D = 1; F = 2; B = 3; R = 4; L = 5
-  U_COLOR = '#eeee00'   # U: yellow
-  D_COLOR = '#eeeeee'   # D: white
-  F_COLOR = '#ee7700'   # F: orange
-  B_COLOR = '#cc0000'   # B: red
-  R_COLOR = '#0000cc'   # R: blue
-  L_COLOR = '#00aa00'   # L: green
-
   FACE_NAMES = %w[U D F B R L]
-  FACE_COLORS = {
-    "U" => U_COLOR,
-    "D" => D_COLOR,
-    "F" => F_COLOR,
-    "B" => B_COLOR,
-    "R" => R_COLOR,
-    "L" => L_COLOR,
-  }
+  FACE_COLORS = "UDFBRL".chars.zip(Config::FACE_COLORS.chars) \
+    .map{|f, c| [f, Config::COLOR_HEX[c]]}.to_h
 
   # Cube topologies
   NEIGHBORS = [
@@ -99,12 +86,23 @@ class Cube
     # Slice moves, Rotations
     # M = Lw L'
     # x = Rw L'
-    %w[M Lw L'  E Dw D'  S Fw F'
-       x Rw L'  y Uw D'  z Fw B'].each_slice(3) do |m, f, s|
-      stickers = TRANS[f].keys + TRANS[s].keys # two sets are disjoint
+    combined_moves =
+      %w[M Lw L'  E Dw D'  S Fw F'
+         x Rw L'  y Uw D'  z Fw B']
+    case Config::LOWERCASE_MOVE
+    when :rotate
+      combined_moves += %w[u Uw D'  d Dw U'  r Rw L'  l Lw R'  f Fw B'  b Bw F']
+    when :double_layer
+      combined_moves += %w[u Uw .  d Dw .  r Rw .  l Lw .  f Fw .  b Bw .]
+    end
+
+    combined_moves.each_slice(3) do |m, f, s|
+      stickers = TRANS[f].keys
+      # two sets are disjoint
+      stickers += TRANS[s].keys unless s == "."
       trans = stickers.map do |st|
         dest = TRANS[f][st] || st
-        dest = TRANS[s][dest] || dest
+        dest = TRANS[s][dest] || dest unless s == "."
         if dest != st
           [st, dest]
         else
@@ -137,7 +135,7 @@ class Cube
     self
   end
   def parse(move)
-    move.scan(/[UDFBRLMESxyz]w?2?'?/)
+    move.scan(/[UDFBRLudfbrlMESxyz]w?2?'?/)
   end
   def inverse(move)
     parse(move).reverse.map do |m|
@@ -280,7 +278,7 @@ EOL
     png.draw_frame
     edges.each.with_index do |en, i|
       if sticker[en] == "U"
-        png.fill_edge(i, U_COLOR, true)
+        png.fill_edge(i, FACE_COLORS["U"], true)
       end
     end
     faces.each.with_index do |fc, i|
@@ -305,7 +303,7 @@ EOL
       when 3
         next if cp.any?{|p| p.include? fn}
       end
-      png.fill_face(i, U_COLOR)
+      png.fill_face(i, FACE_COLORS["U"])
     end
 
     # show edge color if not solved

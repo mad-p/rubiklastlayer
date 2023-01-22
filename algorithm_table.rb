@@ -21,7 +21,10 @@ class AlgorithmTable
     cube.apply(cube.inverse(algorithm))
     cube.reorient
 
-    cube.check_f2l or raise "Not an LL algorithm: #{name}"
+    unless cube.check_f2l
+      puts "Not an LL algorithm: #{name}"
+      return
+    end
     pll = /^[U; ]+$/ =~ cube.inspect
     png = pll ? cube.pll_png : cube.oll_png
     filename = "imgs/#{name}.png"
@@ -29,7 +32,10 @@ class AlgorithmTable
     width = png.image.columns
     height = png.image.rows
 
-    len = cube.parse(algorithm).find_all{|m|m !~ /[xyz]/}.size
+    len = cube.parse(algorithm).find_all do |m|
+      m !~ /[xyz]/ &&
+        !(Config::LOWERCASE_MOVE == :rotate && m =~ /[udfbrl]/)
+    end.size
 
     @cols << <<EOL
       <td width="18%">
